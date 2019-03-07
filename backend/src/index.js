@@ -7,7 +7,8 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  // res.sendFile(path.join,
+  //   (__dirname, "../public/index.html"));
 });
 
 io.on("connection", function(socket) {
