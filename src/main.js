@@ -1,10 +1,8 @@
-import { Vue } from 'vue'
-import { App } from "./components/App"
+import Vue from 'vue'
+import App from "./App.vue"
 
 Vue.config.procutionTip = false;
 
 new Vue({
-  el: "#app",
-  components: { App },
-  template: "<App/>"
-})
+  render: h => h(App),
+}).$mount('#app')
