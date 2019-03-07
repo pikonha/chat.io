@@ -13,8 +13,6 @@ export default {};
 
 
 <style scoped>
-
-
 #sidebar {
   grid-area: "sidebar";
   background-color: red;
@@ -24,6 +22,4 @@ export default {};
   grid-area: "chat-message";
   background-color: blue;
 }
-
-
 </style>

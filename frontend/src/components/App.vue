@@ -1,5 +1,5 @@
 <template>
-  <div id="app">{{username}}</div>
+  <h1>{{username}}</h1>
 </template>
 
 
@@ -13,8 +13,8 @@ export default {
 </script>
 
 
-<style scoped>
-/* #app {
+<style>
+#app {
   height: 100vh;
   display: grid;
   grid-template-columns: 50px 1fr;
@@ -22,5 +22,5 @@ export default {
   grid-template-areas:
     "sidebar chat-message"
     "sidebar chat-input";
-} */
+}
 </style>
