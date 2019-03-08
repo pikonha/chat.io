@@ -1,6 +1,6 @@
 <template>
   <div id="sidebar-chat">
-    <h2>{{text}}</h2>
+    <img id="user-icon" src="../assets/user.png" alt="User Icon">
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: "SidebarChat",
   data() {
-    return { text: "Sidebar" };
+    return { user_img: UserImg };
   }
 };
 </script>
@@ -17,6 +17,12 @@ export default {
 <style>
 #sidebar-chat {
   grid-area: sidebar;
-  background-color: blueviolet;
+  background: #775144;
+}
+
+#user-icon {
+  max-width: 70%;
+  border-radius: 100px;
+  margin: 20px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="scroll-content">
-    <ul>
-      <li v-for="msg in messages" :key="msg.id">{{msg.text}}</li>
+    <ul id="msg-list">
+      <li class="msg-item" v-for="msg in messages" :key="msg.id">{{msg.text}}</li>
     </ul>
   </div>
 </template>
@@ -27,6 +27,15 @@ export default {
 <style>
 #scroll-content {
   grid-area: chat-message;
-  background-color: red;
+  background: #f4dbd8;
+}
+
+#msg-list {
+  list-style-type: none;
+}
+
+.msg-item {
+  color: #2a0800;
+  margin-top: 20px;
 }
 </style>
