@@ -1,17 +1,16 @@
 const app = require("express")();
-const http = require("http").Server(app);
 const morgan = require("morgan");
-const io = require("socket.io")(http);
 
 app.use(morgan("dev"));
 
-io.on("connection", function(socket) {
-  socket.on("chat_msg", function(msg) {
-    console.log("Msg receive:", msg);
-  });
-  socket.on("disconnect", function() {});
+const server = app.listen(3000, () => console.log("Server bound to port 3000"));
+const io = require("socket.io")(server);
 
-  socket.emit("hi", "everyone");
+io.on("connection", function(socket) {
+  socket.on("send_msg", function(msg) {
+    // socket.emit("chat_msg", msg);
+    console.log(msg);
+  });
 });
 
 io.of("/room").on("connection", function(socket) {
@@ -19,5 +18,3 @@ io.of("/room").on("connection", function(socket) {
 
   // socket.on("greet", msg => console.log(msg));
 });
-
-http.listen(8080);

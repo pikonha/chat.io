@@ -1,7 +1,7 @@
 <template>
   <div id="chat-input">
-    <form action @submit.prevent>
-      <input id="inputChat" type="text" v-model="msg_input" placeholder="Enter your message...">
+    <form action @submit.prevent="sendMessage()">
+      <input id="inputChat" type="text" v-model="message" placeholder="Enter your message...">
       <button class="submitChat">Send</button>
     </form>
   </div>
@@ -9,10 +9,24 @@
     
 
 <script>
+import io from "socket.io-client";
+
 export default {
   name: "InputChat",
   data() {
-    return { msg_input: "", typing: false };
+    return {
+      user: "",
+      message: "",
+      messages: [],
+      typing: false,
+      socket: io("localhost:3000")
+    };
+  },
+  methods: {
+    sendMessage() {
+      this.socket.emit("send_msg", this.message);
+      this.message = "";
+    }
   }
 };
 </script>
@@ -26,9 +40,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#inputChat {
 }
 
 .submitChat {
