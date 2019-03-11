@@ -9,7 +9,6 @@ const io = require("socket.io")(server);
 io.on("connection", function(socket) {
   socket.on("send_msg", function(msg) {
     // socket.emit("chat_msg", msg);
-    console.log(msg);
   });
 });
 

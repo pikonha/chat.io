@@ -48,6 +48,6 @@ export default {
   width: 100px;
 
   cursor: pointer;
-  background: rgba(197, 62, 126, 0.33) !important;
+  background: rgba(197, 62, 126, 0.33);
 }
 </style>

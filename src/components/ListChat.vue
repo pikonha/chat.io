@@ -1,24 +1,32 @@
 <template>
   <div id="scroll-content">
-    <ul id="msg-list">
-      <li class="msg-item" v-for="msg in messages" :key="msg.id">{{msg.text}}</li>
-    </ul>
+    <message
+      v-for="msg in messages"
+      :key="msg.id"
+      v-bind:content="msg.content"
+      v-bind:type="msg.type"
+    ></message>
   </div>
 </template>
 
 
 <script>
+import Message from "./Message.vue";
+
 export default {
   name: "ListChat",
   data() {
     return {
       messages: [
-        { id: 0, text: "Vegetables" },
-        { id: 1, text: "Cheese" },
-        { id: 2, text: "Meat" },
-        { id: 3, text: "Whatever else humans are supposed to eat" }
+        { id: 1, content: "Cheese", type: 1 },
+        { id: 2, content: "Meat", type: 2 },
+        { id: 3, content: "Onion", type: 1 },
+        { id: 4, content: "Whatever else humans are supposed to eat", type: 2 }
       ]
     };
+  },
+  components: {
+    Message
   }
 };
 </script>
@@ -28,14 +36,11 @@ export default {
 #scroll-content {
   grid-area: chat-message;
   background: #f4dbd8;
+  display: flex;
+  flex-direction: column;
 }
 
 #msg-list {
   list-style-type: none;
-}
-
-.msg-item {
-  color: #2a0800;
-  margin-top: 20px;
 }
 </style>
