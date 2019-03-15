@@ -1,23 +1,26 @@
 <template>
-  <span v-bind:class="[classObject]">{{content}}</span>
+  <div class="msg-contaier">
+    <img :src="this.message.user_avatar" class="avatar" alt="User avatar">
+    <p :class="msg_origin" class="msg_content">{{message.content}}</p>
+    <!-- <span class="timePosition" v-bind="msg_time">{{this.msg_time}}</span> -->
+  </div>
 </template>
 
 <script>
 export default {
   name: "Message",
-  props: ["content", "type"],
+  props: ["message"],
   date() {
     return {
-      starred: false
+      // msg_time: new Date().toISOString().split("T")
     };
   },
   computed: {
-    classObject: function() {
+    msg_origin() {
       return {
-        msg_item: true,
-        starred: this.starred,
-        sended: this.type == 1,
-        received: this.type == 2
+        sended: this.message.type == 1,
+        received: this.message.type == 2,
+        starred: this.message.starred
       };
     }
   }
@@ -25,10 +28,13 @@ export default {
 </script>
 
 <style scoped>
-.msg_item {
-  color: #2a0800;
-  margin: 10px;
+.msg_container {
+  margin-top: 10px;
+}
+
+.msg_content {
   width: 100%;
+  display: inline-block;
 }
 
 .received {
@@ -40,5 +46,9 @@ export default {
 }
 
 .starred {
+}
+
+.avatar {
+  max-width: 40px;
 }
 </style>
